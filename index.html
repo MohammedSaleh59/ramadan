@@ -8,7 +8,7 @@
 
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0c7b93">
-<title>العد التنازلي لشهر رمضان 1448هـ</title>
+<title>العد التنازلي لشهر رمضان ١٤٤٨هـ</title>
 
 <style>
 *{
@@ -24,6 +24,7 @@ body{
     justify-content:center;
     align-items:center;
     overflow-x:hidden;
+	 font-variant-numeric: arabic-indic;
     background:
     radial-gradient(circle at top, #1f3c88 0%, #0d1b2a 50%, #000 100%);
     color:white;
@@ -143,6 +144,7 @@ h1{
 .footer{
     margin-top:25px;
     font-size:clamp(14px, 3vw, 18px);
+	font-variant-numeric: arabic-indic;
     line-height:1.7;
     color:#ccc;
 }
@@ -221,7 +223,7 @@ h1{
 
 <div class="container">
 
-    <h1>🌙 العد التنازلي لرمضان 1448هـ</h1>
+    <h1>🌙 العد التنازلي لرمضان ١٤٤٨هـ</h1>
 
     <div class="sub">
         أهلاً بشهر الصيام والقيام والقرآن 🤲✨
@@ -257,13 +259,18 @@ h1{
     </div>
 
     <div class="footer">
-        بداية رمضان 1448هـ : 8 فبراير 2027م
-    </div>
+    بداية رمضان ١٤٤٨هـ : ٨ فبراير ٢٠٢٧م
+</div>
 
 </div>
 
 <script>
 
+function toArabicNumbers(number){
+    return number.toString().replace(/\d/g, function(digit){
+        return "٠١٢٣٤٥٦٧٨٩"[digit];
+    });
+}
 // بداية رمضان 1448هـ
 // التاريخ المتوقع حسب تقويم أم القرى
 const targetDate = new Date("February 8, 2027 00:00:00").getTime();
@@ -308,11 +315,11 @@ function updateCountdown(){
 
     const seconds = totalSeconds % 60;
 
-    document.getElementById("months").innerText = months;
-    document.getElementById("days").innerText = days;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("seconds").innerText = seconds;
+    document.getElementById("months").innerText = toArabicNumbers(months);
+document.getElementById("days").innerText = toArabicNumbers(days);
+document.getElementById("hours").innerText = toArabicNumbers(hours);
+document.getElementById("minutes").innerText = toArabicNumbers(minutes);
+document.getElementById("seconds").innerText = toArabicNumbers(seconds);
 }
 
 setInterval(updateCountdown, 1000);
